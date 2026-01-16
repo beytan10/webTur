@@ -1,18 +1,16 @@
 {
-  "name": "Mi Aplicación de Google Script",
-  "short_name": "MiApp",
-  "description": "Una webapp potente ejecutada desde Apps Script",
-  "start_url": "https://beytan10.github.io/webTur/",
+  "name": "Mi App de Turismo",
+  "short_name": "WebTur",
+  "start_url": "/webTur/index.html",
+  "scope": "/webTur/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4285f4",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "icon-512.png",
