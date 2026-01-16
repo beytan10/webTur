@@ -15,11 +15,45 @@
   </style>
 </head>
 <body>
+  <button id="btnInstalar" onclick="clickInstalar()" 
+        style="display:none; position:fixed; top:10px; right:10px; z-index:9999; background:#4285f4; color:white; border:none; padding:10px; border-radius:5px;">
+  Instalar Aplicación
+</button>
   <iframe src="https://script.google.com/macros/s/AKfycbyc1KfZSIYVT7JYlUgWgJSV7YV8asNKeHl3lRNcvyliYJR2gdyQvctMjvfAJrRYet0Lmw/exec"></iframe>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-    }
+  let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Evita que el mini-infobar aparezca por defecto
+  e.preventDefault();
+  // Guarda el evento para dispararlo más tarde
+  deferredPrompt = e;
+  
+  // OPCIONAL: Mostrar un botón o banner propio en tu interfaz
+  const installBtn = document.getElementById('btnInstalar');
+  if(installBtn) {
+    installBtn.style.display = 'block'; 
+  }
+  
+  console.log("Evento beforeinstallprompt capturado.");
+});
+
+// Función para llamar cuando el usuario haga clic en TU botón de instalar
+function clickInstalar() {
+  if (deferredPrompt) {
+    // Muestra el popup oficial de Chrome
+    deferredPrompt.prompt();
+    
+    // Espera a ver si el usuario aceptó
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('El usuario aceptó instalar');
+      }
+      deferredPrompt = null;
+    });
+  }
+}
+    
   </script>
 </body>
 </html>
