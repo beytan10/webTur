@@ -2,7 +2,7 @@
   "name": "Mi Aplicación de Google Script",
   "short_name": "MiApp",
   "description": "Una webapp potente ejecutada desde Apps Script",
-  "start_url": "/index.html",
+  "start_url": "https://beytan10.github.io/webTur/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4285f4",
