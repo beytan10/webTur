@@ -1,2 +1,5 @@
-self.addEventListener('install', (e) => self.skipWaiting());
-self.addEventListener('fetch', (e) => e.respondWith(fetch(e.request)));
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/webTur/sw.js', { scope: '/webTur/' })
+    .then(reg => console.log('SW registrado en scope: webTur'))
+    .catch(err => console.log('Error:', err));
+}
